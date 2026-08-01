@@ -1,0 +1,1 @@
+# Rosegold-Pharmacy-and-Stores.-
