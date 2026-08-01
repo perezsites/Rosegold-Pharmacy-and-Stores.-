@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rosegold Pharmacy & Stores | Obinze</title>
+  <!-- Font Awesome 6 (Free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: #f8fafc;
+      color: #0b2b3d;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1.2rem;
+    }
+
+    /* header / hero */
+    .hero {
+      background: linear-gradient(145deg, #0e3b4f 0%, #1a5a72 100%);
+      color: white;
+      padding: 2rem 1.5rem;
+      border-radius: 32px;
+      margin-bottom: 2rem;
+      box-shadow: 0 12px 30px rgba(10, 50, 70, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: "💊";
+      font-size: 10rem;
+      opacity: 0.08;
+      position: absolute;
+      right: -10px;
+      bottom: -30px;
+      transform: rotate(12deg);
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero h1 i {
+      color: #fcd34d;
+      font-size: 2rem;
+    }
+
+    .hero .rating-badge {
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(4px);
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero .rating-badge i {
+      color: #fbbf24;
+      margin-right: 6px;
+    }
+
+    .hero .address-block {
+      margin-top: 1.2rem;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 0.8rem 1.2rem;
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.98rem;
+      backdrop-filter: blur(2px);
+    }
+
+    .hero .address-block i {
+      color: #93d0e8;
+    }
+
+    .hero .action-buttons {
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.8rem 1.8rem;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      background: white;
+      color: #0e3b4f;
+      border: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn i {
+      font-size: 1.1rem;
+    }
+
+    .btn-primary {
+      background: #fcd34d;
+      color: #0b2b3d;
+      box-shadow: 0 6px 14px rgba(252, 211, 77, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: #fbbf24;
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(252, 211, 77, 0.5);
+    }
+
+    .btn-outline-light {
+      background: transparent;
+      color: white;
+      border: 1.5px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-outline-light:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: white;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: white;
+      box-shadow: 0 6px 14px rgba(37, 211, 102, 0.35);
+    }
+
+    .btn-whatsapp:hover {
+      background: #1ebe5c;
+      transform: scale(1.02);
+    }
+
+    .btn-call {
+      background: #1e3a5f;
+      color: white;
+    }
+
+    /* section cards */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #0b2b3d;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title i {
+      color: #1a5a72;
+      font-size: 1.8rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.8rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 28px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 8px 24px rgba(0, 20, 30, 0.06);
+      transition: all 0.2s ease;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 36px rgba(10, 50, 70, 0.10);
+    }
+
+    .card i {
+      font-size: 2.2rem;
+      color: #1a5a72;
+      margin-bottom: 0.8rem;
+      display: inline-block;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card p {
+      color: #2c4a5a;
+      margin-bottom: 1rem;
+    }
+
+    .card .small-link {
+      color: #1a5a72;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .card .small-link:hover {
+      text-decoration: underline;
+    }
+
+    /* map & hours */
+    .info-panel {
+      background: white;
+      border-radius: 32px;
+      padding: 2rem;
+      box-shadow: 0 8px 24px rgba(0, 20, 30, 0.06);
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: flex-start;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+
+    .info-panel .map-placeholder {
+      flex: 2;
+      min-width: 240px;
+      background: #e6edf2;
+      border-radius: 24px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #1a4b5e;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,0 100,0 100,100 0,100" fill="%23d9e3ea" opacity="0.4"/><circle cx="50" cy="50" r="20" fill="%23b0c8d4" opacity="0.5"/></svg>');
+      background-size: cover;
+      background-blend-mode: overlay;
+      position: relative;
+    }
+
+    .map-placeholder i {
+      font-size: 3rem;
+      color: #0e3b4f;
+      background: white;
+      padding: 16px;
+      border-radius: 60px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .map-placeholder span {
+      margin-top: 8px;
+      font-weight: 500;
+      background: rgba(255,255,255,0.7);
+      padding: 4px 16px;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+    }
+
+    .info-panel .hours-box {
+      flex: 1;
+      min-width: 180px;
+    }
+
+    .hours-box .open-badge {
+      background: #d1fae5;
+      color: #065f46;
+      padding: 0.25rem 1.2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      display: inline-block;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+    }
+
+    .hours-box .time-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #ecf3f7;
+    }
+
+    .hours-box .time-row:last-child {
+      border-bottom: none;
+    }
+
+    /* reviews preview */
+    .review-strip {
+      background: white;
+      border-radius: 32px;
+      padding: 1.8rem 2rem;
+      box-shadow: 0 8px 24px rgba(0, 20, 30, 0.04);
+      margin-bottom: 2rem;
+      border: 1px solid rgba(0,0,0,0.02);
+    }
+
+    .review-strip .stars {
+      color: #f59e0b;
+      letter-spacing: 2px;
+      font-size: 1.4rem;
+    }
+
+    .review-strip .review-text {
+      font-style: italic;
+      color: #1f4457;
+      margin: 0.5rem 0;
+      font-size: 1.05rem;
+    }
+
+    .review-strip .review-author {
+      font-weight: 600;
+      color: #0e3b4f;
+    }
+
+    /* footer CTA */
+    .cta-banner {
+      background: #0e3b4f;
+      color: white;
+      border-radius: 32px;
+      padding: 2rem 2rem;
+      text-align: center;
+      margin: 2rem 0 1rem;
+      box-shadow: 0 10px 30px rgba(10, 50, 70, 0.2);
+    }
+
+    .cta-banner h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-banner .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 1.2rem;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #5d7f8f;
+      padding: 1.5rem 0 0.5rem;
+      border-top: 1px solid #dce8ef;
+      margin-top: 1.5rem;
+    }
+
+    .footer-note i {
+      color: #c42e4b;
+    }
+
+    /* responsive */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .hero .address-block {
+        border-radius: 32px;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+      }
+      .btn {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.95rem;
+      }
+      .info-panel {
+        padding: 1.5rem;
+      }
+      .review-strip {
+        padding: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>
+      <i class="fas fa-capsules"></i> Rosegold Pharmacy & Stores
+    </h1>
+    <div class="rating-badge">
+      <i class="fas fa-star"></i> 5.0 <span style="font-weight:400; margin-left:6px;">(3 reviews)</span>
+    </div>
+    <div class="address-block">
+      <i class="fas fa-location-dot"></i> 5 umukani road, off FUTO junction, Obinze, Imo
+      <span style="opacity:0.7; margin:0 4px;">|</span>
+      <i class="fas fa-clock"></i> Open · Closes 10 pm
+    </div>
+    <div class="action-buttons">
+      <a href="tel:08102491887" class="btn btn-primary"><i class="fas fa-phone"></i> Call now</a>
+      <a href="https://wa.me/2348102491887" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="#" class="btn btn-outline-light"><i class="fas fa-share-nodes"></i> Share</a>
+      <a href="#" class="btn btn-outline-light"><i class="fas fa-bookmark"></i> Save</a>
+    </div>
+  </div>
+
+  <!-- QUICK ACTIONS / CONVERSION CARDS -->
+  <div class="card-grid">
+    <div class="card">
+      <i class="fas fa-prescription-bottle"></i>
+      <h3>Prescription refill</h3>
+      <p>Order your meds in 2 minutes. Free delivery within Obinze.</p>
+      <a href="https://wa.me/2348102491887?text=Hi%20Rosegold%2C%20I%20need%20a%20prescription%20refill" target="_blank" class="small-link">
+        Order via WhatsApp <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    <div class="card">
+      <i class="fas fa-truck-fast"></i>
+      <h3>Same‑day delivery</h3>
+      <p>Get your health essentials delivered to your doorstep today.</p>
+      <a href="tel:08102491887" class="small-link">
+        Call to order <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    <div class="card">
+      <i class="fas fa-hand-holding-heart"></i>
+      <h3>Health consultation</h3>
+      <p>Speak with our pharmacist for expert advice & OTC recommendations.</p>
+      <a href="https://wa.me/2348102491887?text=Hi%2C%20I%20need%20a%20quick%20consultation" target="_blank" class="small-link">
+        Chat on WhatsApp <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- MAP + HOURS (real info) -->
+  <div class="info-panel">
+    <div class="map-placeholder">
+      <i class="fas fa-map-pin"></i>
+      <span>📍 5 umukani road, off FUTO</span>
+      <small style="background:rgba(255,255,255,0.6); padding:0 12px; border-radius:20px; margin-top:6px;">Obinze, Imo</small>
+    </div>
+    <div class="hours-box">
+      <h3 style="display:flex; align-items:center; gap:8px; margin-bottom:0.8rem;">
+        <i class="fas fa-clock" style="color:#1a5a72;"></i> Store hours
+      </h3>
+      <div><span class="open-badge"><i class="fas fa-circle" style="font-size:0.6rem; margin-right:6px; color:#059669;"></i> Open now</span></div>
+      <div style="margin-top:1rem;">
+        <div class="time-row"><span>Monday – Friday</span> <span>8 am – 10 pm</span></div>
+        <div class="time-row"><span>Saturday</span> <span>8 am – 10 pm</span></div>
+        <div class="time-row"><span>Sunday</span> <span>9 am – 9 pm</span></div>
+      </div>
+      <p style="margin-top:1rem; font-size:0.9rem; color:#2f5b6e;">
+        <i class="fas fa-check-circle" style="color:#1a8a5a;"></i> Walk-ins welcome
+      </p>
+    </div>
+  </div>
+
+  <!-- REVIEWS SNIPPET (social proof) -->
+  <div class="review-strip">
+    <div class="stars">
+      <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+      <span style="font-weight:600; color:#0b2b3d; margin-left:10px;">5.0 · 3 reviews</span>
+    </div>
+    <div class="review-text">
+      “Reliable pharmacy with genuine products. The staff is always helpful and delivery is super fast. Highly recommended!”
+    </div>
+    <div class="review-author">— Chidi E. <span style="font-weight:400; color:#587e90;">(verified customer)</span></div>
+    <div style="margin-top:0.6rem; display:flex; gap:16px; flex-wrap:wrap;">
+      <span style="background:#eef4f8; padding:0.2rem 1rem; border-radius:40px; font-size:0.85rem;"><i class="far fa-thumbs-up"></i> 5 ★ service</span>
+      <span style="background:#eef4f8; padding:0.2rem 1rem; border-radius:40px; font-size:0.85rem;"><i class="fas fa-box"></i> Genuine medications</span>
+    </div>
+  </div>
+
+  <!-- FINAL CTA: CONVERT TRAFFIC -->
+  <div class="cta-banner">
+    <h2>💬 Let’s get you sorted</h2>
+    <p style="opacity:0.85; max-width:500px; margin:0 auto;">Call, WhatsApp, or walk in — we’re here to help with all your health needs.</p>
+    <div class="cta-buttons">
+      <a href="tel:08102491887" class="btn btn-primary" style="background:white; color:#0e3b4f; box-shadow:0 6px 14px rgba(0,0,0,0.15);">
+        <i class="fas fa-phone"></i> 0810 249 1887
+      </a>
+      <a href="https://wa.me/2348102491887" target="_blank" class="btn btn-whatsapp" style="background:#25D366; color:white;">
+        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+      </a>
+      <a href="#" class="btn btn-outline-light" style="border-color:rgba(255,255,255,0.4); color:white;">
+        <i class="fas fa-directions"></i> Get directions
+      </a>
+    </div>
+    <p style="margin-top:1.5rem; font-size:0.85rem; opacity:0.7;">
+      <i class="fas fa-location-dot"></i> 5 umukani road, off FUTO junction, Obinze, Imo
+    </p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-note">
+    <i class="fas fa-heart" style="color:#c42e4b;"></i> Rosegold Pharmacy & stores · Trusted since 2018 <br>
+    <span style="font-size:0.8rem; opacity:0.7;">Open today · Closes 10 pm</span>
+  </div>
+
+</div>
+<!-- end container -->
+
+</body>
+</html>
+
+
+  
